@@ -10,7 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BasePage {
     protected static WebDriver driver;
-    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    protected static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     
     static{
         WebDriverManager.chromedriver().setup();

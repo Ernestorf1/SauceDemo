@@ -6,8 +6,12 @@ import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 
+import pages.checkoutCompletePage;
 import pages.loginDemoPage;
-import pages.sauceProducts;
+import pages.overviewPage;
+import pages.sauceProductsPage;
+import pages.yourCartPage;
+import pages.yourInformationPage;
 
 public class SauceDemoTests {
     @BeforeMethod
@@ -35,29 +39,38 @@ public class SauceDemoTests {
         loginDemoPage.verifyErrorMessage();
 
     }
-    //Add a product to the Cart
-    public void addAProduct (){
-        loginSauceDemo();
-        sauceProducts.clickOnAddToCartFirsProduct();
-        
-    }
-
 
     //Validate Products
     @Test
     public void validateProducts(){
-       sauceProducts.login();
-       sauceProducts.verifyAmountProducts();
-       sauceProducts.verifyDescriptionProducts();
+       sauceProductsPage.login();
+       sauceProductsPage.verifyAmountProducts();
+       sauceProductsPage.verifyDescriptionProducts();
     }
     //Add all the products to the cart
     @Test
     public void addAllTheProducts(){
-        sauceProducts.login();
-        sauceProducts.addAllTheProductsCart();
-        sauceProducts.verifyAmountAddedOnIcon();
-        sauceProducts.verifyRemoveButtonOfAll();
+        sauceProductsPage.login();
+        sauceProductsPage.addAllTheProductsCart();
+        sauceProductsPage.verifyAmountAddedOnIcon();
+        sauceProductsPage.verifyRemoveButtonOfAll();
     }
+    //Complete a Purchase
+    @Test
+    public void completePurchase() throws InterruptedException{
+    sauceProductsPage.login();
+    sauceProductsPage.addTheSecondProductListed();
+    yourCartPage.proceedToCheckout();
+    yourInformationPage.inputShippingInformation();
+    overviewPage.verifyCorrectInfo();
+    overviewPage.finishThePurchase();
+    checkoutCompletePage.verifyCompletePurchase();
+
+
+
+
+    }
+
 
     @AfterMethod
     public void tearDown() {

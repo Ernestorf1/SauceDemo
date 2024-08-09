@@ -2,10 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import java.util.List;
 import com.example.BasePage;
 
-public class sauceProducts extends BasePage {
+public class sauceProductsPage extends BasePage {
     private static String sDemoUserField ="user-name";
     private static String sDemoPwdField ="password";
     private static String sDemoLoginButton ="login-button";
@@ -18,7 +20,10 @@ private static String prodOnesieBtn ="add-to-cart-sauce-labs-onesie";
 private static String  prodRedTshirtbtn ="add-to-cart-test.allthethings()-t-shirt-(red)";
 private static String amountCartIcon = "//span[@class='shopping_cart_badge' and contains (@data-test, shopping_cart_badge)]";
 private static String listOfRemoveButtons = "//button[@class='btn btn_secondary btn_small btn_inventory ' and contains (text(), 'Remove')]"; 
-public sauceProducts(){
+private static String secondAddProductButton ="(//button[@class='btn btn_primary btn_small btn_inventory '])[2]";
+private static String shoppingCartLink ="//a[@class='shopping_cart_link']";
+
+public sauceProductsPage(){
         super(driver);
     }
 
@@ -73,6 +78,17 @@ public sauceProducts(){
         System.out.println("Remove Buttons displayed: " + removeButtonsList.size());
 
     }
+
+    public static void addTheSecondProductListed() {
+       WebElement addSecondProductBtnElement = driver.findElement(By.xpath(secondAddProductButton));
+        Assert.assertTrue(addSecondProductBtnElement.isDisplayed());
+       addSecondProductBtnElement.click();
+       WebElement shoppingCarElement = driver.findElement(By.xpath(shoppingCartLink));
+       Assert.assertTrue(shoppingCarElement.isDisplayed());
+       shoppingCarElement.click();
+    }
+
+
 
 
     
