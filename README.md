@@ -52,18 +52,32 @@ The tests will be executed locally and can be integrated with CI/CD pipelines fo
   3. Click on the "Login" button.
 - **Expected Result:** An error message is displayed indicating incorrect credentials.
 
-### 3. Add a Product to the Cart
-- **Steps:**
-  1. Log in with valid credentials.
-  2. Navigate to the Products page.
-  3. Click on the "Add to Cart" button for any product.
-- **Expected Result:** The product is added to the cart, and the cart counter updates.
+### 3. Test Case: Validate Products
 
-### 4. Remove a Product from the Cart
+- **Objective:** Verify that the products listed on the Products page are displayed with the correct amount and description.
+
 - **Steps:**
-  1. Add a product to the cart.
-  2. Click on the "Remove" button for the product in the cart.
-- **Expected Result:** The product is removed from the cart, and the cart counter updates accordingly.
+  1. Log in to the Sauce Demo application.
+  2. Verify that the number of products displayed matches the expected amount.
+  3. Verify that each product's description is accurate and matches the expected descriptions.
+
+- **Expected Result:** 
+  - The number of products displayed on the Products page should match the expected count.
+  - Each product should have an accurate and correctly displayed description.
+
+### 4. Test Case: Add All Products to the Cart
+
+- **Objective:** Ensure that all products can be added to the cart successfully and that the cart icon and remove buttons function correctly.
+
+- **Steps:**
+  1. Log in to the Sauce Demo application.
+  2. Add all available products to the cart.
+  3. Verify that the cart icon displays the correct number of added products.
+  4. Verify that the "Remove" button is displayed for each product added to the cart.
+
+- **Expected Result:** 
+  - All products should be added to the cart, and the cart icon should show the correct number of items.
+  - A "Remove" button should be visible for each product added to the cart.
 
 ### 5. Complete a Purchase
 - **Steps:**

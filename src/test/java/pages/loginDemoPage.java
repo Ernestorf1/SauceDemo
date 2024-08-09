@@ -6,14 +6,14 @@ import org.testng.Assert;
 
 import com.example.BasePage;
 
-public class sauceDemoPage extends BasePage {
+public class loginDemoPage extends BasePage {
     private static String sDemoTitle = "//div[@class='login_logo' and contains (text(),'Swag Labs')]";
     private static String sDemoUserField ="user-name";
     private static String sDemoPwdField ="password";
     private static String sDemoLoginButton ="login-button";
     private static String sDemoProductsTitle = "//span[@class='title' and contains (text(), 'Products')]";
     private static String sDemoErrorMessage = "//h3[@data-test='error']";
-    public sauceDemoPage(){
+    public loginDemoPage(){
         super(driver);
     }
     private static String baseUrl = "https://www.saucedemo.com/";

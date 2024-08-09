@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 
-import pages.sauceDemoPage;
+import pages.loginDemoPage;
 import pages.sauceProducts;
 
 public class SauceDemoTests {
@@ -14,28 +14,35 @@ public class SauceDemoTests {
     public void setUp() {
         System.out.println("Starting Test");
         
-        sauceDemoPage.navigateToSaucePage();
+        loginDemoPage.navigateToSaucePage();
 
     }
+        // Login with correct credentials
+        @Test(priority = 1)
+        public void loginSauceDemo() {
+            loginDemoPage.verifyTitle();
+            loginDemoPage.inputCorrectCredentials();
+            loginDemoPage.clickOnLoginButton();
+            loginDemoPage.verifyLoggedIn();
+        }
 
-    // Login with wrong credentials
-    @Test(priority = 1)
-    public void loginWrong() {
-        sauceDemoPage.verifyTitle();
-        sauceDemoPage.inputWrongCredentials();
-        sauceDemoPage.clickOnLoginButton();
-        sauceDemoPage.verifyErrorMessage();
-
-    }
-
-    // Login with correct credentials
+    // Login with invalid credentials
     @Test(priority = 2)
-    public void loginSauceDemo() {
-        sauceDemoPage.verifyTitle();
-        sauceDemoPage.inputCorrectCredentials();
-        sauceDemoPage.clickOnLoginButton();
-        sauceDemoPage.verifyLoggedIn();
+    public void loginInvalidCredentials() {
+        loginDemoPage.verifyTitle();
+        loginDemoPage.inputWrongCredentials();
+        loginDemoPage.clickOnLoginButton();
+        loginDemoPage.verifyErrorMessage();
+
     }
+    //Add a product to the Cart
+    public void addAProduct (){
+        loginSauceDemo();
+        sauceProducts.clickOnAddToCartFirsProduct();
+        
+    }
+
+
     //Validate Products
     @Test
     public void validateProducts(){
@@ -59,7 +66,7 @@ public class SauceDemoTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        sauceDemoPage.quitBrowser();
+        loginDemoPage.quitBrowser();
         System.out.println("The End");
     }
 
